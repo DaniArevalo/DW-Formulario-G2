@@ -1,0 +1,88 @@
+
+.background-image {
+    background-image: url('img/fondo\ 2.jpg');
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+
+.card {
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+input-field label {
+    color: #333;
+}
+
+
+input-field input[type=text]:focus + label,
+input-field input[type=text].valid + label {
+    color: #26a69a; 
+}
+
+
+select:focus + label,
+select.valid + label {
+    color: #26a69a; 
+}
+
+
+.btn {
+    background-color: #26a69a; 
+    color: white;
+    border-radius: 25px;
+    transition: background-color 0.3s ease; 
+}
+
+.btn:hover {
+    background-color: #00796b; 
+}
+
+
+.btn.waves-effect.waves-light {
+    background-color: #26a69a; 
+    color: white; 
+}
+
+.btn.waves-effect.waves-light:hover {
+    background-color: #00796b; 
+}
+
+
+input[type="radio"]:checked + span,
+input[type="checkbox"]:checked + span {
+    color: #26a69a; 
+}
+
+input[type="radio"]:checked + span:before,
+input[type="checkbox"]:checked + span:before {
+    border: 2px solid #26a69a; 
+    background-color: #26a69a; 
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-bottom: 1px solid #26a69a; 
+    box-shadow: 0 1px 0 0 #26a69a; 
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Información</title>
+    <!-- Añadir enlaces de Materialize -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilo.css"> <!-- Cambia "style.css" por el nombre de tu archivo CSS -->
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m8 l6 offset-m2 offset-l3">
+                <form class="card">
+                    <div class="card-content">
+                        <span class="card-title center-align">Actualizar Información</span>
+                        <div class="input-field">
+                            <input id="firstName" type="text" class="validate">
+                            <label for="firstName">Ingresa tu nombre</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="lastName" type="text" class="validate">
+                            <label for="lastName">Ingresa tu apellido</label>
+                        </div>
+                        <div class="input-field">
+                            <select id="favoriteSport" name="favoriteSport">
+                                <option value="" disabled selected>Seleccionar</option>
+                                <option value="futbol">Fútbol</option>
+                                <option value="baloncesto">Baloncesto</option>
+                                <option value="esgrima">Esgrima</option>
+                                <option value="karate">Karate</option>
+                                <option value="judo">Judo</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                            <label for="favoriteSport">Deporte favorito:</label>
+                        </div>
+                        <span>Género:</span>
+                        <p>
+                            <label>
+                                <input name="gender" type="radio" value="male"/>
+                                <span>Hombre</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="gender" type="radio" value="female"/>
+                                <span>Mujer</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="gender" type="radio" value="notSure"/>
+                                <span>No estoy seguro</span>
+                            </label>
+                        </p>
+                        <div class="input-field">
+                            <select id="stateResident" name="stateResident">
+                                <option value="" disabled selected>Seleccionar</option>
+                                <option value="Guatemala">Guatemala</option>
+                                <option value="Sacatepéquez">Sacatepéquez</option>
+                                <option value="Escuintla">Escuintla</option>
+                                <option value="Chimaltenango">Chimaltenango</option>
+                                <option value="Santa Rosa">Santa Rosa</option>
+                            </select>
+                            <label for="stateResident">Departamento:</label>
+                        </div>
+                        <div class="input-field">
+                            <select id="municipality" name="municipality">
+                                <option value="" disabled selected>Seleccionar</option>
+                                <!-- Las opciones se actualizarán dinámicamente -->
+                            </select>
+                            <label for="municipality">Municipio:</label>
+                        </div>
+                        <p>
+                            <label>
+                                <input type="checkbox" id="age" name="age"/>
+                                <span>21 años o más</span>
+                            </label>
+                        </p>
+                        <p>
+                            <span>Modelos de autos poseídos:</span>
+                            <label>
+                                <input type="checkbox" id="ford" name="carModels" value="Ford"/>
+                                <span>Ford</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="honda" name="carModels" value="Honda"/>
+                                <span>Honda</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="toyota" name="carModels" value="Toyota"/>
+                                <span>Toyota</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="nissan" name="carModels" value="Nissan"/>
+                                <span>Nissan</span>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <button type="submit" class="btn waves-effect waves-light">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Añadir el script de Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            M.FormSelect.init(elems);
+        });
+
+        // Datos de municipios
+        var municipios = {
+            'Guatemala': ['Ciudad de Guatemala', 'Mixco', 'Villa Nueva', 'Santa Catarina Pinula'],
+            'Sacatepéquez': ['Antigua Guatemala', 'San Lucas Sacatepéquez', 'San Juan Alotenango'],
+            'Escuintla': ['Escuintla', 'Santa Lucía Cotzumalguapa', 'Siquinalá'],
+            'Chimaltenango': ['Chimaltenango', 'San Martín Jilotepeque', 'San José Poaquil'],
+            'Santa Rosa': [
+                'Barberena', 'Casillas', 'Chiquimulilla', 'Cuilapa', 'Guazacapán', 
+                'Nueva Santa Rosa', 'Oratorio', 'Pueblo Nuevo Viñas', 'San Juan Tecuaco', 
+                'San Rafael Las Flores', 'Santa Cruz Naranjo', 'Santa María Ixhuatán', 
+                'Santa Rosa de Lima', 'Taxisco'
+            ]
+        };
+
+        document.getElementById('stateResident').addEventListener('change', function() {
+            var selectedState = this.value;
+            var municipalitySelect = document.getElementById('municipality');
+            
+            // Limpiar opciones anteriores
+            municipalitySelect.innerHTML = '<option value="" disabled selected>Seleccionar</option>';
+            
+            // Agregar nuevas opciones
+            if (municipios[selectedState]) {
+                municipios[selectedState].forEach(function(municipio) {
+                    var option = document.createElement('option');
+                    option.value = municipio;
+                    option.textContent = municipio;
+                    municipalitySelect.appendChild(option);
+                });
+            }
+            
+            // Re-inicializar el select de Materialize para que reconozca las nuevas opciones
+            M.FormSelect.init(municipalitySelect);
+        });
+    </script>
+</body>
+</html>

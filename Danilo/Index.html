@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Información</title>
+    <link rel="stylesheet" href="index.css"> <!-- Enlaza el archivo CSS -->
+</head>
+<body>
+    <form>
+        <h1>Actualizar Información</h1>
+        
+        <label for="firstName">Nombre:</label>
+        <input type="text" id="firstName" name="firstName" value="">
+        
+        <label for="lastName">Apellido:</label>
+        <input type="text" id="lastName" name="lastName" value="">
+        
+        <label for="favoriteSport">Deporte favorito:</label>
+        <select id="favoriteSport" name="favoriteSport">
+            <option value="" selected disabled>Seleccione un deporte</option> <!-- Opción vacía -->
+            <option value="Futbol">Futbol</option>
+            <option value="basketball">Baloncesto</option>
+            <option value="Tenis">Tenis</option>
+            <option value="Formula 1">Formula 1</option>
+        </select>
+        
+        
+        <div>
+            <label>Género:</label>
+            <div class="inline-options">
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Hombre</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Mujer</label>
+            </div>
+        </div>
+        
+        <label for="stateResident">Residente del estado:</label>
+        <input type="text" id="stateResident" name="stateResident" placeholder="Ingresa tu estado" value="">
+        
+        
+        
+        <div class="inline-options">
+            <input type="checkbox" id="age" name="age">
+            <label for="age">21 años o más</label>
+        </div>
+        
+        <div>
+            <label>Modelos de autos poseídos:</label>
+            <div class="inline-options">
+                <input type="checkbox" id="toyota" name="carModels" value="Toyota">
+                <label for="toyota">TOYOTA</label>
+                <input type="checkbox" id="bmw" name="carModels" value="BMW">
+                <label for="bmw">BMW</label>
+                <input type="checkbox" id="nissan" name="carModels" value="Nissan">
+                <label for="nissan">NISSAN</label>
+                <input type="checkbox" id="mitsubishi" name="carModels" value="Mitsubishi">
+                <label for="mitsubishi">MITSUBISHI</label>
+            </div>
+        </div>
+        
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>
